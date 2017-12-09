@@ -3,17 +3,14 @@
 #include <string>
 #include <stdexcept>
 using namespace std;
+#include "../helperFunctions.h"
 
 #define inputFileName "captchaInput.txt"
 
-int charToInt(char c);
-
 int main(){
 	/* Read input from file */
-	string input;
-	ifstream inputFile(inputFileName);
-	input.assign(istreambuf_iterator<char>(inputFile), istreambuf_iterator<char>());
-	size_t inputLen = input.length();
+	string input = readEntireFile(inputFileName);
+	int inputLen = input.length();
 
 	/* Trim trailing whitespace if there is one */
 	if(isspace(input[inputLen-1])){
@@ -47,15 +44,4 @@ int main(){
 	cout << "The sum of the second captcha is: " << sum2 << endl;
 
 	return 0;
-}
-
-int charToInt(char c){
-	int i = (int)c - 48;
-	if(i < 0 || i > 9){
-		string msg = "Expected a character, 0-9, '";
-		msg.append(&c);
-		msg.append("' was recieved");
-		throw invalid_argument(msg);
-	}
-	return i;
 }
