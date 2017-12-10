@@ -6,3 +6,5 @@
 int charToInt(char c);
 int stringToInt(std::string str);
 std::string readEntireFile(const char* filename);
+bool isEven(int n);
+int abs(int n);

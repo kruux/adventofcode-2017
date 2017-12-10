@@ -33,3 +33,11 @@ std::string readEntireFile(const char* filename){
 
 	return content;
 }
+
+bool isEven(int n){
+	return n % 2 == 0;
+}
+
+int abs(int n){
+	return n < 0 ? n *-1 : n;
+}
