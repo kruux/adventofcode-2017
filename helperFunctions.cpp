@@ -41,3 +41,29 @@ bool isEven(int n){
 int abs(int n){
 	return n < 0 ? n *-1 : n;
 }
+
+
+CharCount::CharCount(std::string word){
+	for(size_t i = 0; i < word.length(); i++){
+		chars[(int) word[i]]++;
+	}
+}
+int CharCount::getArrLength() const{
+	return sizeof(chars) / sizeof(chars[0]);
+}
+
+bool CharCount::operator==(const CharCount &other) const {
+	bool eq = true;
+	for(int i = 0; i < getArrLength(); i++){
+		if(chars[i] != other.chars[i]){
+			eq = false;
+			break;
+		}
+	}
+
+	return eq;
+}
+
+bool CharCount::operator!=(const CharCount &other) const{
+	return !(*this == other);
+}
